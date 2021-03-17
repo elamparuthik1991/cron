@@ -181,6 +181,29 @@ $(document).ready(function () {
             console.log("Error getting document:", error);
         });
     });
+	
+	$(document).on('click', '.on-add-new-cron', function () {
+        let id = $(this).attr('id');
+        
+        db.collection('Cron').doc("1").get().then(function (document) {
+            if (document.exists) {
+                $('#add-employee-form #cron-id').val(document.data().id);
+				$('#add-employee-form #cron-mode').val(document.data().mode);
+				$('#add-employee-form #cron-instrumentType').val(document.data().instrumentType);
+				$('#add-employee-form #cron-instrumentId').val(document.data().instrumentId);
+				$('#add-employee-form #cron-side').val(document.data().side);
+				$('#add-employee-form #cron-amount').val(document.data().amount);
+				$('#add-employee-form #cron-toZone').val(document.data().toZone);
+				$('#add-employee-form #cron-cron').val(document.data().cron);
+				$('#add-employee-form #cron-endCron').val(document.data().endCron);
+                $('#addEmployeeModal').modal('show');
+            } else {
+                console.log("No such document!");
+            }
+        }).catch(function (error) {
+            console.log("Error getting document:", error);
+        });
+    });
 
     $("#edit-employee-form").submit(function (event) {
         event.preventDefault();
