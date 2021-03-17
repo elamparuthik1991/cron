@@ -105,7 +105,7 @@ $(document).ready(function () {
     // ADD EMPLOYEE
     $("#add-employee-form").submit(function (event) {
         event.preventDefault();
-        db.collection('Cron').doc($('#cron-mode').val()).set({
+        db.collection('Cron').doc($('#cron-id').val()).set({
                 id: $('#cron-id').val(),
 				mode: $('#cron-mode').val(),
 				instrumentType: $('#cron-instrumentType').val(),
