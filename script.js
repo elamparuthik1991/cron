@@ -2,7 +2,8 @@ $(document).ready(function () {
     const employeeRef = db.collection("Cron");
     let deleteIDs = [];
     let lastVisibleEmployeeSnapShot = {};
-    
+    let egg = 10;
+	
     // GET TOTAL SIZE
     employeeRef.onSnapshot(snapshot => {
         let size = snapshot.size;
