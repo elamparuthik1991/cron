@@ -107,14 +107,14 @@ $(document).ready(function () {
         event.preventDefault();
         db.collection('Cron').doc($('#cron-id').val()).set({
                 id: $('#cron-id').val(),
-				mode: $('#cron-mode').val(),
-				instrumentType: $('#cron-instrumentType').val(),
-				instrumentId: $('#cron-instrumentId').val(),
-				side: $('#cron-side').val(),
-				amount: $('#cron-amount').val(),
-				toZone: $('#cron-toZone').val(),
-				cron: $('#cron-cron').val(),
-				endCron: $('#cron-endCron').val()
+		mode: $('#cron-mode').val(),
+		instrumentType: $('#cron-instrumentType').val(),
+		instrumentId: $('#cron-instrumentId').val(),
+		side: $('#cron-side').val(),
+		amount: $('#cron-amount').val(),
+		toZone: $('#cron-toZone').val(),
+		cron: $('#cron-cron').val(),
+		endCron: $('#cron-endCron').val()
             }).then(function () {
                 console.log("Document successfully written!");
                 $("#addEmployeeModal").modal('hide');
@@ -165,14 +165,14 @@ $(document).ready(function () {
         db.collection('Cron').doc(id).get().then(function (document) {
             if (document.exists) {
                 $('#edit-employee-form #cron-id').val(document.data().id);
-				$('#edit-employee-form #cron-mode').val(document.data().mode);
-				$('#edit-employee-form #cron-instrumentType').val(document.data().instrumentType);
-				$('#edit-employee-form #cron-instrumentId').val(document.data().instrumentId);
-				$('#edit-employee-form #cron-side').val(document.data().side);
-				$('#edit-employee-form #cron-amount').val(document.data().amount);
-				$('#edit-employee-form #cron-toZone').val(document.data().toZone);
-				$('#edit-employee-form #cron-cron').val(document.data().cron);
-				$('#edit-employee-form #cron-endCron').val(document.data().endCron);
+		$('#edit-employee-form #cron-mode').val(document.data().mode);
+		$('#edit-employee-form #cron-instrumentType').val(document.data().instrumentType);
+		$('#edit-employee-form #cron-instrumentId').val(document.data().instrumentId);
+		$('#edit-employee-form #cron-side').val(document.data().side);
+		$('#edit-employee-form #cron-amount').val(document.data().amount);
+		$('#edit-employee-form #cron-toZone').val(document.data().toZone);
+		$('#edit-employee-form #cron-cron').val(document.data().cron);
+		$('#edit-employee-form #cron-endCron').val(document.data().endCron);
                 $('#editEmployeeModal').modal('show');
             } else {
                 console.log("No such document!");
@@ -186,15 +186,15 @@ $(document).ready(function () {
         event.preventDefault();
         let id = $(this).attr('edit-id');
         db.collection('Cron').doc(id).update({
-            id: $('#edit-employee-form #cron-id').val(),
-			mode: $('#edit-employee-form #cron-mode').val(),
-			instrumentType: $('#edit-employee-form #cron-instrumentType').val(),
-			instrumentId: $('#edit-employee-form #cron-instrumentId').val(),
-			side: $('#edit-employee-form #cron-side').val(),
-			amount: $('#edit-employee-form #cron-amount').val(),
-			toZone: $('#edit-employee-form #cron-toZone').val(),
-			cron: $('#edit-employee-form #cron-cron').val(),
-			endCron: $('#edit-employee-form #cron-endCron').val()
+            	id: $('#edit-employee-form #cron-id').val(),
+		mode: $('#edit-employee-form #cron-mode').val(),
+		instrumentType: $('#edit-employee-form #cron-instrumentType').val(),
+		instrumentId: $('#edit-employee-form #cron-instrumentId').val(),
+		side: $('#edit-employee-form #cron-side').val(),
+		amount: $('#edit-employee-form #cron-amount').val(),
+		toZone: $('#edit-employee-form #cron-toZone').val(),
+		cron: $('#edit-employee-form #cron-cron').val(),
+		endCron: $('#edit-employee-form #cron-endCron').val()
         });
         $('#editEmployeeModal').modal('hide');
     });
@@ -213,7 +213,7 @@ $(document).ready(function () {
         $('#employee-table tbody').html('');
         const queryPrevious = employeeRef
             .endBefore(lastVisibleEmployeeSnapShot)
-            .limit(2);
+            .limit(10);
 
         queryPrevious.get().then(snap => {
             snap.forEach(doc => {
@@ -231,7 +231,7 @@ $(document).ready(function () {
         $('#employee-table tbody').html('');
         const queryNext = employeeRef
             .startAfter(lastVisibleEmployeeSnapShot)
-            .limit(2);
+            .limit(10);
 
         queryNext.get().then(snap => {
             snap.forEach(doc => {
